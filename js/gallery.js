@@ -91,10 +91,10 @@ renderImages();
 function openModal(image){
  instance = basicLightbox.create(`
   <div class="modal'><li class="gallery-item">
-  <a class="gallery-link" href="${image.original}">
+  <a class="gallery-link" href="${image.preview}">
     <img
       class="modal-image"
-      src="${image.original}"
+      src="${image.preview}"
       data-source="${image.original}"
       alt="${image.description}"
     /></a></li></div>
@@ -120,13 +120,13 @@ function handleCloseModal(e){
         closeModal();
     }
 }
-container.addEventListener('click',(e) => {
+container.addEventListener('click',e => {
   e.preventDefault();
-    if( e.target.nodeName !== 'img') return;
+    if( e.target=== e.currentTarget) return;
     const original = e.target.dataset.source;
-    const image = images.find(el => el.original === original);
-    if (image){
-      openModal(image);
-    }
+    const image = images.find(e => e.original === original);
+    if(image){
+      openModal(image);}
+    
     
 });
